@@ -8,6 +8,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
+	@Override
+	public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
+		resolvers.add(new DecodedPathVariableResolver());
+	}
+
     @Bean
 	public FilterRegistrationBean<CustomErrorFilter> urlDecodeFilter(){
 		FilterRegistrationBean<CustomErrorFilter> registrationBean = new FilterRegistrationBean<>();
