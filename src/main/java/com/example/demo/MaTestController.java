@@ -9,6 +9,17 @@ public class MaTestController {
 
     private static final Logger LOG = LoggerFactory.getLogger(MaTestController.class);
 
+
+    @GetMapping("/decode/{value}")
+    public String decode(@DecodedPathVariable("value") String decodedValue) {
+        return "Decoded value: " + decodedValue;
+    }
+    @GetMapping("/decode/{value}/suite")
+    public String decodesuite(@DecodedPathVariable("value") String decodedValue) {
+        return "Decoded value: " + decodedValue;
+    }
+
+
     @GetMapping("/test/{input}")
     public String test(@PathVariable String input) {
         return method(input);
@@ -18,7 +29,6 @@ public class MaTestController {
     public String testsuite(@PathVariable String input) {
        return method(input);
     }
-
 
 //    @RequestMapping(value = "/test1/{input}", method = RequestMethod.PUT)
 //    public String test1(@PathVariable String input) {

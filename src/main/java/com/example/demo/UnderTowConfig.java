@@ -15,7 +15,7 @@ public class UnderTowConfig implements WebServerFactoryCustomizer<UndertowServle
     public void customize(UndertowServletWebServerFactory factory) {
         LOG.info("[MAU] customize...");
         factory.addBuilderCustomizers(builder -> {
-//            builder.setServerOption(UndertowOptions.DECODE_URL, false);
+            builder.setServerOption(UndertowOptions.DECODE_URL, false);
 //            builder.setServerOption(UndertowOptions.URL_CHARSET, "UTF-8");
 //                builder.setServerOption(UndertowOptions.ALLOW_UNESCAPED_CHARACTERS_IN_URL, Boolean.TRUE);
         });

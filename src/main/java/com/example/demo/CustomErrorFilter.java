@@ -27,23 +27,29 @@ public class CustomErrorFilter implements Filter {
             String path = httpRequest.getRequestURI();
             LOG.info("[MAU] path={}", path);
 
-            if( httpRequest.getRequestURI().contains("%")) {
-                LOG.info("[MAU] contains %");
+//            if( httpRequest.getRequestURI().contains("%")) {
+//                LOG.info("[MAU] contains %");
+//
+//                String val = URLDecoder.decode(path, StandardCharsets.UTF_8.name());
+//                LOG.info("[MAU] decode uri={}", val);
+//                HttpServletRequest modifiedRequest = new HttpServletRequestWrapper((httpRequest)) {
+//                    @Override
+//                    public String getRequestURI() {
+//                        return val;
+//                    }
+//                };
+//                // si tout est correct, continuer le traitement
+//                chain.doFilter(modifiedRequest, response);
+//            }else{
+//                // si tout est correct, continuer le traitement
+//                chain.doFilter(request, response);
+//            }
 
-                String val = URLDecoder.decode(path, StandardCharsets.UTF_8.name());
-                LOG.info("[MAU] decode uri={}", val);
-                HttpServletRequest modifiedRequest = new HttpServletRequestWrapper((httpRequest)) {
-                    @Override
-                    public String getRequestURI() {
-                        return val;
-                    }
-                };
-                // si tout est correct, continuer le traitement
-                chain.doFilter(modifiedRequest, response);
-            }else{
-                // si tout est correct, continuer le traitement
-                chain.doFilter(request, response);
-            }
+//            URLDecoder.decode(path, StandardCharsets.UTF_8.name());
+
+            chain.doFilter(request, response);
+
+
         } catch(IllegalArgumentException e){
             LOG.info("[MAU] doFilter - show error 400");
 //            httpResponse.sendRedirect(httpRequest.getContextPath() + "/error/400");
