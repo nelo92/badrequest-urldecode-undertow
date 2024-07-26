@@ -38,6 +38,11 @@
 		<!-- java version for spring 2 & < 3 -->
 		<java.version>11</java.version>
 
+
+		<!-- Version du serveur web undertow -->
+		<!-- default version: 2.0.32-Final on redefinie la verison pour coller avec celle de ROA -->
+		<undertow.version>2.2.5.Final</undertow.version>
+
 	</properties>
 	<dependencies>
 
@@ -70,7 +75,6 @@
 			<scope>provided</scope>
 		</dependency>
 
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -89,6 +93,28 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>io.undertow</groupId>
+				<artifactId>undertow-core</artifactId>
+				<version>${undertow.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.undertow</groupId>
+				<artifactId>undertow-servlet</artifactId>
+				<version>${undertow.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.undertow</groupId>
+				<artifactId>undertow-websockets-jsr</artifactId>
+				<version>${undertow.version}</version>
+			</dependency>
+		</dependencies>
+
+	</dependencyManagement>
 
 	<build>
 		<plugins>
