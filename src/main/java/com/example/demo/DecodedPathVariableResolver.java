@@ -10,6 +10,7 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.util.Map;
 
 public class DecodedPathVariableResolver implements HandlerMethodArgumentResolver {
 
@@ -26,7 +27,14 @@ public class DecodedPathVariableResolver implements HandlerMethodArgumentResolve
                                   NativeWebRequest webRequest,
                                   WebDataBinderFactory binderFactory) throws UnsupportedEncodingException {
        LOG.info("[MAU] DecodedPathVariableResolver...");
-        String value = webRequest.getAttribute(parameter.getParameterName(), NativeWebRequest.SCOPE_REQUEST).toString();
+//        String value = webRequest.getAttribute(parameter.getParameterName(), NativeWebRequest.SCOPE_REQUEST).toString();
+
+        DecodedPathVariable annotation = parameter.getParameterAnnotation(DecodedPathVariable.class);
+        String pathVariableName = annotation.value();
+        Map<String, String> uriTemplateVars = (Map<String, String>) webRequest.getAttribute(
+                HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE, NativeWebRequest.SCOPE_REQUEST);
+        String value = uriTemplateVars.get(pathVariableName);
+
         String encoding = "UTF-8"; // ou l'encodage que vous souhaitez utiliser
         return URLDecoder.decode(value, encoding);
     }
