@@ -6,8 +6,22 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 
+		<!--spring version 3+ - dernier version 3 en release  -->
+		<!-- genere avec spring initializr sur https://start.spring.io/ -->
 		<!--		<version>3.3.2</version>-->
-		<version>2.1.18.RELEASE</version>
+
+		<!-- spring version 3+ -->
+		<!-- probleme present -->
+		<version>3.0.0</version>
+
+<!--		<version>3.1.12</version>-->
+
+		<!-- version 2+ - dernier version 2 en release - NON ROA -->
+		<!-- pb toujours present sur cette version -->
+<!--		<version>2.7.18</version>-->
+
+		<!-- version ROA -->
+<!--		<version>2.1.18.RELEASE</version>-->
 
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
@@ -32,16 +46,15 @@
 	</scm>
 	<properties>
 
-		<!-- java version for spring 3+ -->
-<!--		<java.version>17</java.version>-->
-
 		<!-- java version for spring 2 & < 3 -->
-		<java.version>11</java.version>
+<!--		<java.version>11</java.version>-->
 
+		<!-- java version for spring 3+ -->
+		<java.version>17</java.version>
 
 		<!-- Version du serveur web undertow -->
 		<!-- default version: 2.0.32-Final on redefinie la verison pour coller avec celle de ROA -->
-		<undertow.version>2.2.5.Final</undertow.version>
+<!--		<undertow.version>2.2.5.Final</undertow.version>-->
 
 	</properties>
 	<dependencies>
@@ -94,7 +107,7 @@
 		</dependency>
 	</dependencies>
 
-
+	<!--
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -113,8 +126,8 @@
 				<version>${undertow.version}</version>
 			</dependency>
 		</dependencies>
-
 	</dependencyManagement>
+	-->
 
 	<build>
 		<plugins>

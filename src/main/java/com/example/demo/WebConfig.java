@@ -10,15 +10,15 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class WebConfig {
 
-	@Bean
-	public WebServerFactoryCustomizer<UndertowServletWebServerFactory> undertowServerFactoryCustomizer(){
-		return factory -> factory.addDeploymentInfoCustomizers(new UndertowDeploymentInfoCustomizer() {
-			@Override
-			public void customize(DeploymentInfo deploymentInfo) {
-				deploymentInfo.addInnerHandlerChainWrapper(handler -> new CustomHttHandler(handler));
-			}
-		});
-	}
+//	@Bean
+//	public WebServerFactoryCustomizer<UndertowServletWebServerFactory> undertowServerFactoryCustomizer(){
+//		return factory -> factory.addDeploymentInfoCustomizers(new UndertowDeploymentInfoCustomizer() {
+//			@Override
+//			public void customize(DeploymentInfo deploymentInfo) {
+//				deploymentInfo.addInnerHandlerChainWrapper(handler -> new CustomHttHandler(handler));
+//			}
+//		});
+//	}
 
 //		implements WebMvcConfigurer {
 //
